@@ -6,3 +6,6 @@ Intermediate results of experiments dealing with the training of mixed models fo
 
 The models focus on printings using Latin script and Antiqua/Fraktur types.
 Training data included works from the 15th to 19th century.
+
+**most recent updates**:
+Added lsh-3 which does not regularize vocal ligatures anymore and only unifies spaces around "real" punctuation (.,:;?!)
