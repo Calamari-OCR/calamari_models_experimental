@@ -1,0 +1,2313 @@
+{
+  "model": {
+    "network": {
+      "layers": [
+        {
+          "filters": 40,
+          "kernelSize": {
+            "x": 3,
+            "y": 3
+          },
+          "stride": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "type": "MAX_POOLING",
+          "kernelSize": {
+            "x": 2,
+            "y": 2
+          },
+          "stride": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "filters": 60,
+          "kernelSize": {
+            "x": 3,
+            "y": 3
+          },
+          "stride": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "type": "MAX_POOLING",
+          "kernelSize": {
+            "x": 2,
+            "y": 2
+          },
+          "stride": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "type": "LSTM",
+          "hiddenNodes": 200
+        }
+      ],
+      "solver": "ADAM_SOLVER",
+      "dropout": 0.5,
+      "features": 48,
+      "classes": 245,
+      "backend": {
+        "cudnn": true,
+        "randomSeed": 4,
+        "shuffleBufferSize": 1000
+      },
+      "ctcMergeRepeated": true,
+      "learningRate": 0.001,
+      "clippingNorm": 5.0
+    },
+    "lineHeight": 48,
+    "dataPreprocessor": {
+      "type": "MULTI_NORMALIZER",
+      "children": [
+        {
+          "lineHeight": 48,
+          "pad": 16
+        }
+      ]
+    },
+    "textPreprocessor": {
+      "type": "MULTI_NORMALIZER",
+      "children": [
+        {
+          "type": "TEXT_NORMALIZER"
+        },
+        {
+          "type": "TEXT_REGULARIZER",
+          "replacements": [
+            {
+              "old": "\u00b5",
+              "new": "\u03bc"
+            },
+            {
+              "old": "\u2013",
+              "new": "-"
+            },
+            {
+              "old": "\u2014",
+              "new": "-"
+            },
+            {
+              "old": "\"",
+              "new": "''"
+            },
+            {
+              "old": "`",
+              "new": "'"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201d",
+              "new": "''"
+            },
+            {
+              "old": "\u00b4",
+              "new": "'"
+            },
+            {
+              "old": "\u2018",
+              "new": "'"
+            },
+            {
+              "old": "\u2019",
+              "new": "'"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201d",
+              "new": "''"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201e",
+              "new": ",,"
+            },
+            {
+              "old": "\u2026",
+              "new": "..."
+            },
+            {
+              "old": "\u2032",
+              "new": "'"
+            },
+            {
+              "old": "\u2033",
+              "new": "''"
+            },
+            {
+              "old": "\u2034",
+              "new": "'''"
+            },
+            {
+              "old": "\u3003",
+              "new": "''"
+            },
+            {
+              "old": "\ua738",
+              "new": "AV"
+            },
+            {
+              "old": "\ua739",
+              "new": "av"
+            },
+            {
+              "old": "\ua73a",
+              "new": "AV"
+            },
+            {
+              "old": "\ua73b",
+              "new": "av"
+            },
+            {
+              "old": "\ua73c",
+              "new": "AY"
+            },
+            {
+              "old": "\ua73d",
+              "new": "ay"
+            },
+            {
+              "old": "\ud83d\ude70",
+              "new": "et"
+            },
+            {
+              "old": "\ufb00",
+              "new": "ff"
+            },
+            {
+              "old": "\ufb03",
+              "new": "ffi"
+            },
+            {
+              "old": "\ufb04",
+              "new": "ffl"
+            },
+            {
+              "old": "\ufb02",
+              "new": "fl"
+            },
+            {
+              "old": "\ufb01",
+              "new": "fi"
+            },
+            {
+              "old": "\u1e9e",
+              "new": "\u017fs"
+            },
+            {
+              "old": "\ufb06",
+              "new": "st"
+            },
+            {
+              "old": "\ufb05",
+              "new": "\u017ft"
+            },
+            {
+              "old": "\ua728",
+              "new": "TZ"
+            },
+            {
+              "old": "\ua729",
+              "new": "tz"
+            },
+            {
+              "old": "\ua760",
+              "new": "VY"
+            },
+            {
+              "old": "\ua761",
+              "new": "vy"
+            },
+            {
+              "old": "\u2160",
+              "new": "I"
+            },
+            {
+              "old": "\u2161",
+              "new": "II"
+            },
+            {
+              "old": "\u2162",
+              "new": "III"
+            },
+            {
+              "old": "\u2163",
+              "new": "IV"
+            },
+            {
+              "old": "\u2164",
+              "new": "V"
+            },
+            {
+              "old": "\u2165",
+              "new": "VI"
+            },
+            {
+              "old": "\u2166",
+              "new": "VII"
+            },
+            {
+              "old": "\u2167",
+              "new": "VIII"
+            },
+            {
+              "old": "\u2168",
+              "new": "IX"
+            },
+            {
+              "old": "\u2169",
+              "new": "X"
+            },
+            {
+              "old": "\u216a",
+              "new": "XI"
+            },
+            {
+              "old": "\u216b",
+              "new": "XII"
+            },
+            {
+              "old": "\u216c",
+              "new": "L"
+            },
+            {
+              "old": "\u216d",
+              "new": "C"
+            },
+            {
+              "old": "\u216e",
+              "new": "D"
+            },
+            {
+              "old": "\u216f",
+              "new": "M"
+            },
+            {
+              "old": "\u2170",
+              "new": "i"
+            },
+            {
+              "old": "\u2171",
+              "new": "ii"
+            },
+            {
+              "old": "\u2172",
+              "new": "iii"
+            },
+            {
+              "old": "\u2173",
+              "new": "iv"
+            },
+            {
+              "old": "\u2174",
+              "new": "v"
+            },
+            {
+              "old": "\u2175",
+              "new": "vi"
+            },
+            {
+              "old": "\u2176",
+              "new": "vii"
+            },
+            {
+              "old": "\u2177",
+              "new": "viii"
+            },
+            {
+              "old": "\u2178",
+              "new": "ix"
+            },
+            {
+              "old": "\u2179",
+              "new": "x"
+            },
+            {
+              "old": "\u217a",
+              "new": "xi"
+            },
+            {
+              "old": "\u217b",
+              "new": "xii"
+            },
+            {
+              "old": "\u217c",
+              "new": "l"
+            },
+            {
+              "old": "\u217d",
+              "new": "c"
+            },
+            {
+              "old": "\u217e",
+              "new": "d"
+            },
+            {
+              "old": "\u217f",
+              "new": "m"
+            },
+            {
+              "old": "''",
+              "new": "\""
+            },
+            {
+              "old": "z",
+              "new": "\u0292"
+            },
+            {
+              "old": "Z",
+              "new": "\u01b7"
+            },
+            {
+              "old": "\ua75b",
+              "new": "r"
+            },
+            {
+              "old": "I",
+              "new": "J"
+            },
+            {
+              "old": "\u2e0d",
+              "new": "\\"
+            },
+            {
+              "old": "q\u0308",
+              "new": "q\u1dd3"
+            },
+            {
+              "old": "&c\u0308",
+              "new": "&c\u1dd3"
+            },
+            {
+              "old": "\u1e21",
+              "new": "g\u1dd3"
+            },
+            {
+              "old": "v\u0309",
+              "new": "v\u1de3"
+            },
+            {
+              "old": "v\u1dce",
+              "new": "v\u1de3"
+            },
+            {
+              "old": "b\u1dce",
+              "new": "b\u1de3"
+            },
+            {
+              "old": "p\u1dce",
+              "new": "p\u1de3"
+            },
+            {
+              "old": "d\u0309",
+              "new": "\u00f0"
+            },
+            {
+              "old": "\ua75f",
+              "new": "v\u1de3"
+            },
+            {
+              "old": "t\u1de3",
+              "new": "t\u1dd1"
+            },
+            {
+              "old": "\u019e",
+              "new": "n"
+            },
+            {
+              "old": "\ue066",
+              "new": "C\u0323"
+            },
+            {
+              "old": "\ue1dc",
+              "new": "N\u0303"
+            },
+            {
+              "old": "\ue282",
+              "new": "Q\u0307"
+            },
+            {
+              "old": "\ue42c",
+              "new": "a\u0364"
+            },
+            {
+              "old": "\ue491",
+              "new": "\u0111"
+            },
+            {
+              "old": "\ue4e1",
+              "new": "e\u0363"
+            },
+            {
+              "old": "\ue5b8",
+              "new": "m\u0303"
+            },
+            {
+              "old": "\ue5d2",
+              "new": "m\u0303"
+            },
+            {
+              "old": "\ue5dc",
+              "new": "\u00f1"
+            },
+            {
+              "old": "\ue644",
+              "new": "o\u0364"
+            },
+            {
+              "old": "\ue665",
+              "new": "p\u0303"
+            },
+            {
+              "old": "\ue681",
+              "new": "q\u0303"
+            },
+            {
+              "old": "\ue68b",
+              "new": "\ua757\u0303"
+            },
+            {
+              "old": "\ue6e2",
+              "new": "t\u0301"
+            },
+            {
+              "old": "\ue72b",
+              "new": "u\u0364"
+            },
+            {
+              "old": "\ue72d",
+              "new": "\u016f"
+            },
+            {
+              "old": "\ue73a",
+              "new": "v\u0301"
+            },
+            {
+              "old": "\ue781",
+              "new": "y\u0364"
+            },
+            {
+              "old": "\ue8b7",
+              "new": "\u00df"
+            },
+            {
+              "old": "\ue8ba",
+              "new": "\ua75f"
+            },
+            {
+              "old": "\ue8bf",
+              "new": "q;"
+            },
+            {
+              "old": "\ueada",
+              "new": "\u017ft"
+            },
+            {
+              "old": "\ueba2",
+              "new": "\u017fi"
+            },
+            {
+              "old": "\ueba3",
+              "new": "\u017fl"
+            },
+            {
+              "old": "\ueba5",
+              "new": "\u017fp"
+            },
+            {
+              "old": "\ueba6",
+              "new": "\u017f\u017f"
+            },
+            {
+              "old": "\ueba7",
+              "new": "\u017f\u017fi"
+            },
+            {
+              "old": "\uebac",
+              "new": "\u00df"
+            },
+            {
+              "old": "\uebe3",
+              "new": "j\u0308"
+            },
+            {
+              "old": "\ueec4",
+              "new": "ck"
+            },
+            {
+              "old": "\ueec5",
+              "new": "ct"
+            },
+            {
+              "old": "\ueecb",
+              "new": "ft"
+            },
+            {
+              "old": "\ueed6",
+              "new": "pp"
+            },
+            {
+              "old": "\ueed7",
+              "new": "\ua753p"
+            },
+            {
+              "old": "\ueedc",
+              "new": "tz"
+            },
+            {
+              "old": "\uefa1",
+              "new": "\u00e6"
+            },
+            {
+              "old": "q\uf02f",
+              "new": "q\u0365"
+            },
+            {
+              "old": "\uf158",
+              "new": "\u204a"
+            },
+            {
+              "old": "\uf159",
+              "new": "\u00f0"
+            },
+            {
+              "old": "\uf160",
+              "new": "?"
+            },
+            {
+              "old": "\uf161",
+              "new": ":"
+            },
+            {
+              "old": "\uf1a5",
+              "new": "\ua770"
+            },
+            {
+              "old": "\uf1a6",
+              "new": "\ua770"
+            },
+            {
+              "old": "\uf1ac",
+              "new": ";"
+            },
+            {
+              "old": "t\uf1cc",
+              "new": "t\u1dd1"
+            },
+            {
+              "old": "\uf220",
+              "new": "i"
+            },
+            {
+              "old": "\uf223",
+              "new": "m"
+            },
+            {
+              "old": "\uf2ae",
+              "new": "\u2619"
+            },
+            {
+              "old": "\uf2ea",
+              "new": "\u2114"
+            },
+            {
+              "old": "\uf4f9",
+              "new": "ll"
+            },
+            {
+              "old": "\uf4fc",
+              "new": "\u017fk"
+            },
+            {
+              "old": "\uf4ff",
+              "new": "\u017f\u017ft"
+            },
+            {
+              "old": "\uf500",
+              "new": "a\u0363"
+            },
+            {
+              "old": "\uf501",
+              "new": "c\u0303"
+            },
+            {
+              "old": "\uf502",
+              "new": "ch"
+            },
+            {
+              "old": "\uf504",
+              "new": "g\u030a"
+            },
+            {
+              "old": "\uf505",
+              "new": "g\u0303"
+            },
+            {
+              "old": "\uf506",
+              "new": "h\u030a"
+            },
+            {
+              "old": "\uf507",
+              "new": "p\u0303"
+            },
+            {
+              "old": "\uf508",
+              "new": "q\u030a"
+            },
+            {
+              "old": "\uf509",
+              "new": "q\u0303;"
+            },
+            {
+              "old": "\uf50a",
+              "new": "d'"
+            },
+            {
+              "old": "\uf50b",
+              "new": "l'"
+            },
+            {
+              "old": "\uf50c",
+              "new": "q\u0301;"
+            },
+            {
+              "old": "\uf50d",
+              "new": "q\u0301;"
+            },
+            {
+              "old": "\uf50e",
+              "new": "q\u0301"
+            },
+            {
+              "old": "\uf50f",
+              "new": "q\u0303"
+            },
+            {
+              "old": "\uf510",
+              "new": "r\u0303"
+            },
+            {
+              "old": "\uf511",
+              "new": "s\u0303"
+            },
+            {
+              "old": "\uf512",
+              "new": "t\u1dd1"
+            },
+            {
+              "old": "\uf513",
+              "new": "v\u0306"
+            },
+            {
+              "old": "\uf514",
+              "new": "w\u0306"
+            },
+            {
+              "old": "\uf515",
+              "new": "&"
+            },
+            {
+              "old": "\uf516",
+              "new": "z\u0303"
+            },
+            {
+              "old": "\uf517",
+              "new": "c\u0303"
+            },
+            {
+              "old": "\uf518",
+              "new": "r\u0303"
+            },
+            {
+              "old": "\uf519",
+              "new": "m\u0303"
+            },
+            {
+              "old": "\uf51a",
+              "new": "\ua759\u1dd3"
+            },
+            {
+              "old": "\uf51b",
+              "new": "\u00f0"
+            },
+            {
+              "old": "\uf51d",
+              "new": "z\u1de3"
+            },
+            {
+              "old": "\uf51e",
+              "new": "\u017f\u0142"
+            },
+            {
+              "old": "\uf51f",
+              "new": "p\u1dd3"
+            },
+            {
+              "old": "\uf520",
+              "new": "\u2184\u0308"
+            },
+            {
+              "old": "\uf522",
+              "new": "c\u1dd3"
+            },
+            {
+              "old": "\uf523",
+              "new": "q\u1dd3"
+            },
+            {
+              "old": "\uf524",
+              "new": "b\u1de3"
+            },
+            {
+              "old": "\uf525",
+              "new": "h\u1de3"
+            },
+            {
+              "old": "\uf526",
+              "new": "p\u1de3"
+            },
+            {
+              "old": "\uf527",
+              "new": "v\u1de3"
+            },
+            {
+              "old": "\uf52a",
+              "new": "y\u1de3"
+            },
+            {
+              "old": "\uf52b",
+              "new": "y\u036d"
+            },
+            {
+              "old": "\uf52c",
+              "new": "sp"
+            },
+            {
+              "old": "\uf52d",
+              "new": "\u2114"
+            },
+            {
+              "old": "\uf52f",
+              "new": "q\u1dd3;"
+            },
+            {
+              "old": "\uf530",
+              "new": "s\u1dd3"
+            },
+            {
+              "old": "\uf531",
+              "new": "Ca"
+            },
+            {
+              "old": "\uf532",
+              "new": "as"
+            },
+            {
+              "old": "\uf533",
+              "new": "is"
+            },
+            {
+              "old": "\uf534",
+              "new": "us"
+            },
+            {
+              "old": "\uf535",
+              "new": "Qu"
+            },
+            {
+              "old": "\uf536",
+              "new": "ra"
+            },
+            {
+              "old": "\uf537",
+              "new": "ta"
+            },
+            {
+              "old": "\uf538",
+              "new": "\u2235"
+            },
+            {
+              "old": "\u0101",
+              "new": "a\u0303"
+            },
+            {
+              "old": "\u0113",
+              "new": "\u1ebd"
+            },
+            {
+              "old": "\u012b",
+              "new": "\u0129"
+            },
+            {
+              "old": "\u014d",
+              "new": "\u00f5"
+            },
+            {
+              "old": "\u016b",
+              "new": "\u0169"
+            },
+            {
+              "old": "c\u0304",
+              "new": "c\u0303"
+            },
+            {
+              "old": "q\u0304",
+              "new": "q\u0303"
+            },
+            {
+              "old": "r\u0304",
+              "new": "r\u0303"
+            },
+            {
+              "old": "(\\S)(\\s*)([.,:;?!])(\\s*)(\\S)",
+              "new": "\\1\\3 \\5",
+              "regex": true
+            },
+            {
+              "old": "(?u)\\s+",
+              "new": " ",
+              "regex": true
+            },
+            {
+              "old": "(?u)\\n",
+              "regex": true
+            },
+            {
+              "old": "(?u)^\\s+",
+              "regex": true
+            },
+            {
+              "old": "(?u)\\s+$",
+              "regex": true
+            }
+          ]
+        },
+        {
+          "type": "STRIP_NORMALIZER"
+        }
+      ]
+    },
+    "textPostprocessor": {
+      "type": "MULTI_NORMALIZER",
+      "children": [
+        {
+          "type": "TEXT_NORMALIZER"
+        },
+        {
+          "type": "TEXT_REGULARIZER",
+          "replacements": [
+            {
+              "old": "\u00b5",
+              "new": "\u03bc"
+            },
+            {
+              "old": "\u2013",
+              "new": "-"
+            },
+            {
+              "old": "\u2014",
+              "new": "-"
+            },
+            {
+              "old": "\"",
+              "new": "''"
+            },
+            {
+              "old": "`",
+              "new": "'"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201d",
+              "new": "''"
+            },
+            {
+              "old": "\u00b4",
+              "new": "'"
+            },
+            {
+              "old": "\u2018",
+              "new": "'"
+            },
+            {
+              "old": "\u2019",
+              "new": "'"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201d",
+              "new": "''"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201e",
+              "new": ",,"
+            },
+            {
+              "old": "\u2026",
+              "new": "..."
+            },
+            {
+              "old": "\u2032",
+              "new": "'"
+            },
+            {
+              "old": "\u2033",
+              "new": "''"
+            },
+            {
+              "old": "\u2034",
+              "new": "'''"
+            },
+            {
+              "old": "\u3003",
+              "new": "''"
+            },
+            {
+              "old": "\ua738",
+              "new": "AV"
+            },
+            {
+              "old": "\ua739",
+              "new": "av"
+            },
+            {
+              "old": "\ua73a",
+              "new": "AV"
+            },
+            {
+              "old": "\ua73b",
+              "new": "av"
+            },
+            {
+              "old": "\ua73c",
+              "new": "AY"
+            },
+            {
+              "old": "\ua73d",
+              "new": "ay"
+            },
+            {
+              "old": "\ud83d\ude70",
+              "new": "et"
+            },
+            {
+              "old": "\ufb00",
+              "new": "ff"
+            },
+            {
+              "old": "\ufb03",
+              "new": "ffi"
+            },
+            {
+              "old": "\ufb04",
+              "new": "ffl"
+            },
+            {
+              "old": "\ufb02",
+              "new": "fl"
+            },
+            {
+              "old": "\ufb01",
+              "new": "fi"
+            },
+            {
+              "old": "\u1e9e",
+              "new": "\u017fs"
+            },
+            {
+              "old": "\ufb06",
+              "new": "st"
+            },
+            {
+              "old": "\ufb05",
+              "new": "\u017ft"
+            },
+            {
+              "old": "\ua728",
+              "new": "TZ"
+            },
+            {
+              "old": "\ua729",
+              "new": "tz"
+            },
+            {
+              "old": "\ua760",
+              "new": "VY"
+            },
+            {
+              "old": "\ua761",
+              "new": "vy"
+            },
+            {
+              "old": "\u2160",
+              "new": "I"
+            },
+            {
+              "old": "\u2161",
+              "new": "II"
+            },
+            {
+              "old": "\u2162",
+              "new": "III"
+            },
+            {
+              "old": "\u2163",
+              "new": "IV"
+            },
+            {
+              "old": "\u2164",
+              "new": "V"
+            },
+            {
+              "old": "\u2165",
+              "new": "VI"
+            },
+            {
+              "old": "\u2166",
+              "new": "VII"
+            },
+            {
+              "old": "\u2167",
+              "new": "VIII"
+            },
+            {
+              "old": "\u2168",
+              "new": "IX"
+            },
+            {
+              "old": "\u2169",
+              "new": "X"
+            },
+            {
+              "old": "\u216a",
+              "new": "XI"
+            },
+            {
+              "old": "\u216b",
+              "new": "XII"
+            },
+            {
+              "old": "\u216c",
+              "new": "L"
+            },
+            {
+              "old": "\u216d",
+              "new": "C"
+            },
+            {
+              "old": "\u216e",
+              "new": "D"
+            },
+            {
+              "old": "\u216f",
+              "new": "M"
+            },
+            {
+              "old": "\u2170",
+              "new": "i"
+            },
+            {
+              "old": "\u2171",
+              "new": "ii"
+            },
+            {
+              "old": "\u2172",
+              "new": "iii"
+            },
+            {
+              "old": "\u2173",
+              "new": "iv"
+            },
+            {
+              "old": "\u2174",
+              "new": "v"
+            },
+            {
+              "old": "\u2175",
+              "new": "vi"
+            },
+            {
+              "old": "\u2176",
+              "new": "vii"
+            },
+            {
+              "old": "\u2177",
+              "new": "viii"
+            },
+            {
+              "old": "\u2178",
+              "new": "ix"
+            },
+            {
+              "old": "\u2179",
+              "new": "x"
+            },
+            {
+              "old": "\u217a",
+              "new": "xi"
+            },
+            {
+              "old": "\u217b",
+              "new": "xii"
+            },
+            {
+              "old": "\u217c",
+              "new": "l"
+            },
+            {
+              "old": "\u217d",
+              "new": "c"
+            },
+            {
+              "old": "\u217e",
+              "new": "d"
+            },
+            {
+              "old": "\u217f",
+              "new": "m"
+            },
+            {
+              "old": "''",
+              "new": "\""
+            },
+            {
+              "old": "z",
+              "new": "\u0292"
+            },
+            {
+              "old": "Z",
+              "new": "\u01b7"
+            },
+            {
+              "old": "\ua75b",
+              "new": "r"
+            },
+            {
+              "old": "I",
+              "new": "J"
+            },
+            {
+              "old": "\u2e0d",
+              "new": "\\"
+            },
+            {
+              "old": "q\u0308",
+              "new": "q\u1dd3"
+            },
+            {
+              "old": "&c\u0308",
+              "new": "&c\u1dd3"
+            },
+            {
+              "old": "\u1e21",
+              "new": "g\u1dd3"
+            },
+            {
+              "old": "v\u0309",
+              "new": "v\u1de3"
+            },
+            {
+              "old": "v\u1dce",
+              "new": "v\u1de3"
+            },
+            {
+              "old": "b\u1dce",
+              "new": "b\u1de3"
+            },
+            {
+              "old": "p\u1dce",
+              "new": "p\u1de3"
+            },
+            {
+              "old": "d\u0309",
+              "new": "\u00f0"
+            },
+            {
+              "old": "\ua75f",
+              "new": "v\u1de3"
+            },
+            {
+              "old": "t\u1de3",
+              "new": "t\u1dd1"
+            },
+            {
+              "old": "\u019e",
+              "new": "n"
+            },
+            {
+              "old": "\ue066",
+              "new": "C\u0323"
+            },
+            {
+              "old": "\ue1dc",
+              "new": "N\u0303"
+            },
+            {
+              "old": "\ue282",
+              "new": "Q\u0307"
+            },
+            {
+              "old": "\ue42c",
+              "new": "a\u0364"
+            },
+            {
+              "old": "\ue491",
+              "new": "\u0111"
+            },
+            {
+              "old": "\ue4e1",
+              "new": "e\u0363"
+            },
+            {
+              "old": "\ue5b8",
+              "new": "m\u0303"
+            },
+            {
+              "old": "\ue5d2",
+              "new": "m\u0303"
+            },
+            {
+              "old": "\ue5dc",
+              "new": "\u00f1"
+            },
+            {
+              "old": "\ue644",
+              "new": "o\u0364"
+            },
+            {
+              "old": "\ue665",
+              "new": "p\u0303"
+            },
+            {
+              "old": "\ue681",
+              "new": "q\u0303"
+            },
+            {
+              "old": "\ue68b",
+              "new": "\ua757\u0303"
+            },
+            {
+              "old": "\ue6e2",
+              "new": "t\u0301"
+            },
+            {
+              "old": "\ue72b",
+              "new": "u\u0364"
+            },
+            {
+              "old": "\ue72d",
+              "new": "\u016f"
+            },
+            {
+              "old": "\ue73a",
+              "new": "v\u0301"
+            },
+            {
+              "old": "\ue781",
+              "new": "y\u0364"
+            },
+            {
+              "old": "\ue8b7",
+              "new": "\u00df"
+            },
+            {
+              "old": "\ue8ba",
+              "new": "\ua75f"
+            },
+            {
+              "old": "\ue8bf",
+              "new": "q;"
+            },
+            {
+              "old": "\ueada",
+              "new": "\u017ft"
+            },
+            {
+              "old": "\ueba2",
+              "new": "\u017fi"
+            },
+            {
+              "old": "\ueba3",
+              "new": "\u017fl"
+            },
+            {
+              "old": "\ueba5",
+              "new": "\u017fp"
+            },
+            {
+              "old": "\ueba6",
+              "new": "\u017f\u017f"
+            },
+            {
+              "old": "\ueba7",
+              "new": "\u017f\u017fi"
+            },
+            {
+              "old": "\uebac",
+              "new": "\u00df"
+            },
+            {
+              "old": "\uebe3",
+              "new": "j\u0308"
+            },
+            {
+              "old": "\ueec4",
+              "new": "ck"
+            },
+            {
+              "old": "\ueec5",
+              "new": "ct"
+            },
+            {
+              "old": "\ueecb",
+              "new": "ft"
+            },
+            {
+              "old": "\ueed6",
+              "new": "pp"
+            },
+            {
+              "old": "\ueed7",
+              "new": "\ua753p"
+            },
+            {
+              "old": "\ueedc",
+              "new": "tz"
+            },
+            {
+              "old": "\uefa1",
+              "new": "\u00e6"
+            },
+            {
+              "old": "q\uf02f",
+              "new": "q\u0365"
+            },
+            {
+              "old": "\uf158",
+              "new": "\u204a"
+            },
+            {
+              "old": "\uf159",
+              "new": "\u00f0"
+            },
+            {
+              "old": "\uf160",
+              "new": "?"
+            },
+            {
+              "old": "\uf161",
+              "new": ":"
+            },
+            {
+              "old": "\uf1a5",
+              "new": "\ua770"
+            },
+            {
+              "old": "\uf1a6",
+              "new": "\ua770"
+            },
+            {
+              "old": "\uf1ac",
+              "new": ";"
+            },
+            {
+              "old": "t\uf1cc",
+              "new": "t\u1dd1"
+            },
+            {
+              "old": "\uf220",
+              "new": "i"
+            },
+            {
+              "old": "\uf223",
+              "new": "m"
+            },
+            {
+              "old": "\uf2ae",
+              "new": "\u2619"
+            },
+            {
+              "old": "\uf2ea",
+              "new": "\u2114"
+            },
+            {
+              "old": "\uf4f9",
+              "new": "ll"
+            },
+            {
+              "old": "\uf4fc",
+              "new": "\u017fk"
+            },
+            {
+              "old": "\uf4ff",
+              "new": "\u017f\u017ft"
+            },
+            {
+              "old": "\uf500",
+              "new": "a\u0363"
+            },
+            {
+              "old": "\uf501",
+              "new": "c\u0303"
+            },
+            {
+              "old": "\uf502",
+              "new": "ch"
+            },
+            {
+              "old": "\uf504",
+              "new": "g\u030a"
+            },
+            {
+              "old": "\uf505",
+              "new": "g\u0303"
+            },
+            {
+              "old": "\uf506",
+              "new": "h\u030a"
+            },
+            {
+              "old": "\uf507",
+              "new": "p\u0303"
+            },
+            {
+              "old": "\uf508",
+              "new": "q\u030a"
+            },
+            {
+              "old": "\uf509",
+              "new": "q\u0303;"
+            },
+            {
+              "old": "\uf50a",
+              "new": "d'"
+            },
+            {
+              "old": "\uf50b",
+              "new": "l'"
+            },
+            {
+              "old": "\uf50c",
+              "new": "q\u0301;"
+            },
+            {
+              "old": "\uf50d",
+              "new": "q\u0301;"
+            },
+            {
+              "old": "\uf50e",
+              "new": "q\u0301"
+            },
+            {
+              "old": "\uf50f",
+              "new": "q\u0303"
+            },
+            {
+              "old": "\uf510",
+              "new": "r\u0303"
+            },
+            {
+              "old": "\uf511",
+              "new": "s\u0303"
+            },
+            {
+              "old": "\uf512",
+              "new": "t\u1dd1"
+            },
+            {
+              "old": "\uf513",
+              "new": "v\u0306"
+            },
+            {
+              "old": "\uf514",
+              "new": "w\u0306"
+            },
+            {
+              "old": "\uf515",
+              "new": "&"
+            },
+            {
+              "old": "\uf516",
+              "new": "z\u0303"
+            },
+            {
+              "old": "\uf517",
+              "new": "c\u0303"
+            },
+            {
+              "old": "\uf518",
+              "new": "r\u0303"
+            },
+            {
+              "old": "\uf519",
+              "new": "m\u0303"
+            },
+            {
+              "old": "\uf51a",
+              "new": "\ua759\u1dd3"
+            },
+            {
+              "old": "\uf51b",
+              "new": "\u00f0"
+            },
+            {
+              "old": "\uf51d",
+              "new": "z\u1de3"
+            },
+            {
+              "old": "\uf51e",
+              "new": "\u017f\u0142"
+            },
+            {
+              "old": "\uf51f",
+              "new": "p\u1dd3"
+            },
+            {
+              "old": "\uf520",
+              "new": "\u2184\u0308"
+            },
+            {
+              "old": "\uf522",
+              "new": "c\u1dd3"
+            },
+            {
+              "old": "\uf523",
+              "new": "q\u1dd3"
+            },
+            {
+              "old": "\uf524",
+              "new": "b\u1de3"
+            },
+            {
+              "old": "\uf525",
+              "new": "h\u1de3"
+            },
+            {
+              "old": "\uf526",
+              "new": "p\u1de3"
+            },
+            {
+              "old": "\uf527",
+              "new": "v\u1de3"
+            },
+            {
+              "old": "\uf52a",
+              "new": "y\u1de3"
+            },
+            {
+              "old": "\uf52b",
+              "new": "y\u036d"
+            },
+            {
+              "old": "\uf52c",
+              "new": "sp"
+            },
+            {
+              "old": "\uf52d",
+              "new": "\u2114"
+            },
+            {
+              "old": "\uf52f",
+              "new": "q\u1dd3;"
+            },
+            {
+              "old": "\uf530",
+              "new": "s\u1dd3"
+            },
+            {
+              "old": "\uf531",
+              "new": "Ca"
+            },
+            {
+              "old": "\uf532",
+              "new": "as"
+            },
+            {
+              "old": "\uf533",
+              "new": "is"
+            },
+            {
+              "old": "\uf534",
+              "new": "us"
+            },
+            {
+              "old": "\uf535",
+              "new": "Qu"
+            },
+            {
+              "old": "\uf536",
+              "new": "ra"
+            },
+            {
+              "old": "\uf537",
+              "new": "ta"
+            },
+            {
+              "old": "\uf538",
+              "new": "\u2235"
+            },
+            {
+              "old": "\u0101",
+              "new": "a\u0303"
+            },
+            {
+              "old": "\u0113",
+              "new": "\u1ebd"
+            },
+            {
+              "old": "\u012b",
+              "new": "\u0129"
+            },
+            {
+              "old": "\u014d",
+              "new": "\u00f5"
+            },
+            {
+              "old": "\u016b",
+              "new": "\u0169"
+            },
+            {
+              "old": "c\u0304",
+              "new": "c\u0303"
+            },
+            {
+              "old": "q\u0304",
+              "new": "q\u0303"
+            },
+            {
+              "old": "r\u0304",
+              "new": "r\u0303"
+            },
+            {
+              "old": "(\\S)(\\s*)([.,:;?!])(\\s*)(\\S)",
+              "new": "\\1\\3 \\5",
+              "regex": true
+            },
+            {
+              "old": "(?u)\\s+",
+              "new": " ",
+              "regex": true
+            },
+            {
+              "old": "(?u)\\n",
+              "regex": true
+            },
+            {
+              "old": "(?u)^\\s+",
+              "regex": true
+            },
+            {
+              "old": "(?u)\\s+$",
+              "regex": true
+            }
+          ]
+        },
+        {
+          "type": "STRIP_NORMALIZER"
+        }
+      ]
+    },
+    "codec": {
+      "charset": [
+        "",
+        " ",
+        "!",
+        "&",
+        "'",
+        "(",
+        ")",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        ";",
+        "=",
+        "?",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "[",
+        "]",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+        "\"",
+        "*",
+        "\\",
+        "_",
+        "|",
+        "\u00a7",
+        "\u00ab",
+        "\u00ac",
+        "\u00b6",
+        "\u00b7",
+        "\u00b9",
+        "\u00bb",
+        "\u00bd",
+        "\u00c4",
+        "\u00c6",
+        "\u00d3",
+        "\u00dc",
+        "\u00df",
+        "\u00e0",
+        "\u00e1",
+        "\u00e2",
+        "\u00e3",
+        "\u00e4",
+        "\u00e6",
+        "\u00e7",
+        "\u00e8",
+        "\u00e9",
+        "\u00ea",
+        "\u00eb",
+        "\u00ec",
+        "\u00ee",
+        "\u00ef",
+        "\u00f0",
+        "\u00f1",
+        "\u00f2",
+        "\u00f3",
+        "\u00f4",
+        "\u00f5",
+        "\u00f6",
+        "\u00f9",
+        "\u00fa",
+        "\u00fb",
+        "\u00fc",
+        "\u00ff",
+        "\u0107",
+        "\u0111",
+        "\u0119",
+        "\u0129",
+        "\u0142",
+        "\u014b",
+        "\u0153",
+        "\u0169",
+        "\u016f",
+        "\u017f",
+        "\u01b7",
+        "\u0207",
+        "\u0223",
+        "\u0233",
+        "\u0292",
+        "\u02d6",
+        "\u0301",
+        "\u0303",
+        "\u0304",
+        "\u0308",
+        "\u030a",
+        "\u0315",
+        "\u0342",
+        "\u0364",
+        "\u0365",
+        "\u0366",
+        "\u0391",
+        "\u0393",
+        "\u03a3",
+        "\u03ac",
+        "\u03ad",
+        "\u03ae",
+        "\u03b1",
+        "\u03b2",
+        "\u03b3",
+        "\u03b4",
+        "\u03b5",
+        "\u03b7",
+        "\u03b8",
+        "\u03b9",
+        "\u03ba",
+        "\u03bb",
+        "\u03bc",
+        "\u03bd",
+        "\u03be",
+        "\u03bf",
+        "\u03c0",
+        "\u03c1",
+        "\u03c2",
+        "\u03c3",
+        "\u03c4",
+        "\u03c5",
+        "\u03c6",
+        "\u03c7",
+        "\u03c9",
+        "\u03cc",
+        "\u03ce",
+        "\u03d6",
+        "\u03e7",
+        "\u0452",
+        "\u05d0",
+        "\u05d1",
+        "\u05d4",
+        "\u05d5",
+        "\u05d6",
+        "\u05d7",
+        "\u05d9",
+        "\u05db",
+        "\u05de",
+        "\u05e0",
+        "\u05e1",
+        "\u05e4",
+        "\u05e7",
+        "\u05e8",
+        "\u05e9",
+        "\u05ea",
+        "\u1d10",
+        "\u1dce",
+        "\u1dd1",
+        "\u1dd3",
+        "\u1de3",
+        "\u1e85",
+        "\u1ebd",
+        "\u1ef9",
+        "\u1f00",
+        "\u1f10",
+        "\u1f76",
+        "\u1f78",
+        "\u1fc6",
+        "\u1fe4",
+        "\u1fe5",
+        "\u1fe6",
+        "\u1ff6",
+        "\u201a",
+        "\u204a",
+        "\u2081",
+        "\u2086",
+        "\u211e",
+        "\u2184",
+        "\u25bd",
+        "\u2609",
+        "\u263d",
+        "\u263f",
+        "\u2640",
+        "\u2642",
+        "\u2643",
+        "\u2644",
+        "\u2e17",
+        "\u2e4a",
+        "\ua751",
+        "\ua753",
+        "\ua757",
+        "\ua758",
+        "\ua759",
+        "\ua75d",
+        "\ua76b",
+        "\ua76d",
+        "\ua770",
+        "\ua776",
+        "\ueba1",
+        "\ueed9",
+        "\uf02f",
+        "\uf1bb",
+        "\uf1cc"
+      ]
+    }
+  },
+  "processes": 8,
+  "maxIters": 1000000,
+  "skipInvalidGt": true,
+  "display": 100.0,
+  "statsSize": 100,
+  "batchSize": 5,
+  "checkpointFrequency": -1.0,
+  "outputDir": "/home/ls6/reul/temp/c1_sel_all_from-mix_preload/fold_4",
+  "iter": 142883,
+  "lossStats": [
+    4.1436253,
+    4.139638,
+    4.1360793,
+    4.143993,
+    4.1398883,
+    4.13721,
+    4.1654267,
+    4.1637135,
+    4.162202,
+    4.1599073,
+    4.1566863,
+    4.1545305,
+    4.1587057,
+    4.1545725,
+    4.1535277,
+    4.151348,
+    4.1482983,
+    4.146575,
+    4.1657476,
+    4.1621766,
+    4.1578717,
+    4.1558647,
+    4.154278,
+    4.15035,
+    4.149708,
+    4.1460648,
+    4.142464,
+    4.1411853,
+    4.1384063,
+    4.136735,
+    4.1342196,
+    4.1314864,
+    4.1286244,
+    4.128396,
+    4.1649427,
+    4.16374,
+    4.1601787,
+    4.1571755,
+    4.1551285,
+    4.1524796,
+    4.1520004,
+    4.1839895,
+    4.179145,
+    4.181283,
+    4.2066307,
+    4.2034183,
+    4.2006025,
+    4.198086,
+    4.19524,
+    4.1919537,
+    4.187356,
+    4.1870427,
+    4.183555,
+    4.1829348,
+    4.1806407,
+    4.1814094,
+    4.1779046,
+    4.179398,
+    4.1762075,
+    4.1738987,
+    4.1693797,
+    4.1654058,
+    4.1970963,
+    4.197636,
+    4.193342,
+    4.1901264,
+    4.1951523,
+    4.193258,
+    4.189736,
+    4.185455,
+    4.1839633,
+    4.180616,
+    4.1761155,
+    4.1740413,
+    4.180103,
+    4.177294,
+    4.175852,
+    4.1753697,
+    4.1725636,
+    4.1720867,
+    4.1699567,
+    4.190993,
+    4.1865788,
+    4.1840124,
+    4.1838336,
+    4.1835613,
+    4.182076,
+    4.179596,
+    4.184119,
+    4.211181,
+    4.217716,
+    4.215176,
+    4.2115726,
+    4.208507,
+    4.2060814,
+    4.203796,
+    4.200354,
+    4.1972814,
+    4.2367067,
+    4.2347665
+  ],
+  "lerStats": [
+    0.117414966,
+    0.02298658,
+    0.011560045,
+    0.008719136,
+    0.0,
+    0.0,
+    0.0,
+    0.009945355,
+    0.17192982,
+    0.003076923,
+    0.02,
+    0.05487805,
+    0.023448277,
+    0.0,
+    0.016216217,
+    0.031451613,
+    0.004255319,
+    0.024942499,
+    0.0033333334,
+    0.027288456,
+    0.005063291,
+    0.0040816325,
+    0.0,
+    0.009302326,
+    0.034146342,
+    0.014814815,
+    0.2,
+    0.0059701493,
+    0.0044444446,
+    0.0028985508,
+    0.0,
+    0.013985415,
+    0.005263158,
+    0.0,
+    0.014990511,
+    0.009586057,
+    0.007999999,
+    0.040299773,
+    0.027043477,
+    0.004651163,
+    0.0,
+    0.011010558,
+    0.14714286,
+    0.008163265,
+    0.0033333334,
+    0.02264753,
+    0.021798847,
+    0.0030303032,
+    0.011513158,
+    0.008510638,
+    0.0,
+    0.0525,
+    0.0,
+    0.04516129,
+    0.00909091,
+    0.0068965517,
+    0.009302326,
+    0.024188539,
+    0.00909091,
+    0.013333334,
+    0.044999998,
+    0.004255319,
+    0.01845878,
+    0.003125,
+    0.0,
+    0.0,
+    0.009344791,
+    0.010721003,
+    0.014026162,
+    0.0032258064,
+    0.0,
+    0.0155814905,
+    0.016666668,
+    0.04276316,
+    0.0,
+    0.0,
+    0.021177774,
+    0.0,
+    0.004166667,
+    0.0,
+    0.025,
+    0.01536232,
+    0.0,
+    0.004255319,
+    0.014285715,
+    0.017990073,
+    0.02072439,
+    0.025454545,
+    0.09677419,
+    0.021212121,
+    0.0,
+    0.17767146,
+    0.01978022,
+    0.0,
+    0.025739348,
+    0.011931065,
+    0.01171477,
+    0.019784946,
+    0.033333335,
+    0.0029411765
+  ],
+  "dtStats": [
+    0.036270857,
+    0.03221464,
+    0.032286167,
+    0.04181099,
+    0.03323698,
+    0.03171754,
+    0.030834436,
+    0.036622047,
+    0.027660131,
+    0.02588296,
+    0.026018143,
+    0.03406334,
+    0.032278538,
+    0.03619647,
+    0.035946608,
+    0.04374075,
+    0.04714513,
+    1.0437746,
+    0.029407263,
+    0.032077312,
+    0.033915043,
+    0.039497375,
+    0.027563095,
+    0.028829813,
+    0.03718877,
+    0.04333663,
+    0.03010583,
+    0.03329754,
+    0.032937527,
+    0.032917023,
+    0.03314185,
+    0.027371645,
+    0.019463778,
+    0.039438725,
+    0.031456232,
+    0.028186798,
+    0.030922413,
+    0.02951336,
+    0.023495674,
+    0.04336834,
+    0.03753972,
+    0.042146683,
+    0.021070242,
+    0.031366587,
+    0.03674078,
+    0.03284192,
+    0.031983852,
+    0.030435324,
+    0.028552532,
+    0.039618492,
+    0.024498224,
+    0.04298401,
+    0.033615112,
+    0.029668093,
+    0.026370764,
+    0.02848363,
+    0.028123617,
+    0.023678541,
+    0.031163692,
+    0.037754774,
+    0.029748678,
+    0.03489256,
+    0.029615879,
+    0.0400486,
+    0.04412675,
+    0.035453796,
+    0.021576881,
+    0.02661252,
+    0.04000473,
+    0.023819923,
+    0.0321548,
+    0.037558556,
+    0.02509594,
+    0.027338266,
+    0.031212568,
+    0.04026127,
+    0.027021408,
+    0.026147842,
+    0.036117077,
+    0.040956736,
+    0.03667164,
+    0.030514479,
+    0.027124882,
+    0.027070522,
+    0.03206849,
+    0.026341677,
+    0.037086487,
+    0.027615309,
+    0.03142619,
+    0.027291298,
+    0.030278683,
+    0.038384438,
+    0.029427528,
+    0.024909496,
+    0.035408735,
+    0.034486294,
+    0.032918215,
+    0.019783497,
+    0.045265198,
+    0.03661871
+  ],
+  "totalTime": 7123.3843,
+  "earlyStoppingFrequency": -1.0,
+  "earlyStoppingNbest": 5,
+  "earlyStoppingBestModelPrefix": "4",
+  "earlyStoppingBestAccuracy": 0.96835464,
+  "earlyStoppingBestCurNbest": 1,
+  "earlyStoppingBestAtIter": 142884,
+  "earlyStoppingBestModelOutputDir": "/scratch/zpd/data/ground-truth/ptr/models/ensembles/c1_sel_all_from-mix_preload",
+  "outputModelPrefix": "model_",
+  "dataAugRetrainOnOriginal": true,
+  "version": 2
+}
