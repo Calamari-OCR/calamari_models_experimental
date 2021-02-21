@@ -1,0 +1,1031 @@
+{
+  "model": {
+    "network": {
+      "layers": [
+        {
+          "filters": 40,
+          "kernelSize": {
+            "x": 3,
+            "y": 3
+          },
+          "stride": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "type": "MAX_POOLING",
+          "kernelSize": {
+            "x": 2,
+            "y": 2
+          },
+          "stride": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "filters": 60,
+          "kernelSize": {
+            "x": 3,
+            "y": 3
+          },
+          "stride": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "type": "MAX_POOLING",
+          "kernelSize": {
+            "x": 2,
+            "y": 2
+          },
+          "stride": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "type": "LSTM",
+          "hiddenNodes": 200
+        }
+      ],
+      "solver": "ADAM_SOLVER",
+      "dropout": 0.5,
+      "features": 48,
+      "classes": 150,
+      "backend": {
+        "cudnn": true,
+        "shuffleBufferSize": 1000
+      },
+      "ctcMergeRepeated": true,
+      "learningRate": 0.001,
+      "clippingNorm": 5.0
+    },
+    "lineHeight": 48,
+    "dataPreprocessor": {
+      "lineHeight": 48,
+      "pad": 16
+    },
+    "textPreprocessor": {
+      "type": "MULTI_NORMALIZER",
+      "children": [
+        {
+          "type": "TEXT_NORMALIZER"
+        },
+        {
+          "type": "TEXT_REGULARIZER",
+          "replacements": [
+            {
+              "old": "\u00b5",
+              "new": "\u03bc"
+            },
+            {
+              "old": "\u2013\u2014\u2014",
+              "new": "-"
+            },
+            {
+              "old": "\u2013\u2014",
+              "new": "-"
+            },
+            {
+              "old": "\"",
+              "new": "''"
+            },
+            {
+              "old": "`",
+              "new": "'"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201d",
+              "new": "''"
+            },
+            {
+              "old": "\u00b4",
+              "new": "'"
+            },
+            {
+              "old": "\u2018",
+              "new": "'"
+            },
+            {
+              "old": "\u2019",
+              "new": "'"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201d",
+              "new": "''"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201e",
+              "new": ",,"
+            },
+            {
+              "old": "\u2026",
+              "new": "..."
+            },
+            {
+              "old": "\u2032",
+              "new": "'"
+            },
+            {
+              "old": "\u2033",
+              "new": "''"
+            },
+            {
+              "old": "\u2034",
+              "new": "'''"
+            },
+            {
+              "old": "\u3003",
+              "new": "''"
+            },
+            {
+              "old": "\u2160",
+              "new": "I"
+            },
+            {
+              "old": "\u2161",
+              "new": "II"
+            },
+            {
+              "old": "\u2162",
+              "new": "III"
+            },
+            {
+              "old": "\u2163",
+              "new": "IV"
+            },
+            {
+              "old": "\u2164",
+              "new": "V"
+            },
+            {
+              "old": "\u2165",
+              "new": "VI"
+            },
+            {
+              "old": "\u2166",
+              "new": "VII"
+            },
+            {
+              "old": "\u2167",
+              "new": "VIII"
+            },
+            {
+              "old": "\u2168",
+              "new": "IX"
+            },
+            {
+              "old": "\u2169",
+              "new": "X"
+            },
+            {
+              "old": "\u216a",
+              "new": "XI"
+            },
+            {
+              "old": "\u216b",
+              "new": "XII"
+            },
+            {
+              "old": "\u216c",
+              "new": "L"
+            },
+            {
+              "old": "\u216d",
+              "new": "C"
+            },
+            {
+              "old": "\u216e",
+              "new": "D"
+            },
+            {
+              "old": "\u216f",
+              "new": "M"
+            },
+            {
+              "old": "\u2170",
+              "new": "i"
+            },
+            {
+              "old": "\u2171",
+              "new": "ii"
+            },
+            {
+              "old": "\u2172",
+              "new": "iii"
+            },
+            {
+              "old": "\u2173",
+              "new": "iv"
+            },
+            {
+              "old": "\u2174",
+              "new": "v"
+            },
+            {
+              "old": "\u2175",
+              "new": "vi"
+            },
+            {
+              "old": "\u2176",
+              "new": "vii"
+            },
+            {
+              "old": "\u2177",
+              "new": "viii"
+            },
+            {
+              "old": "\u2178",
+              "new": "ix"
+            },
+            {
+              "old": "\u2179",
+              "new": "x"
+            },
+            {
+              "old": "\u217a",
+              "new": "xi"
+            },
+            {
+              "old": "\u217b",
+              "new": "xii"
+            },
+            {
+              "old": "\u217c",
+              "new": "l"
+            },
+            {
+              "old": "\u217d",
+              "new": "c"
+            },
+            {
+              "old": "\u217e",
+              "new": "d"
+            },
+            {
+              "old": "\u217f",
+              "new": "m"
+            },
+            {
+              "old": "\\s+(?u)",
+              "new": " ",
+              "regex": true
+            },
+            {
+              "old": "\\n(?u)",
+              "regex": true
+            },
+            {
+              "old": "^\\s+(?u)",
+              "regex": true
+            },
+            {
+              "old": "\\s+$(?u)",
+              "regex": true
+            }
+          ]
+        },
+        {
+          "type": "STRIP_NORMALIZER"
+        },
+        {
+          "type": "BIDI_NORMALIZER",
+          "bidiDirection": "BIDI_RTL"
+        }
+      ]
+    },
+    "textPostprocessor": {
+      "type": "MULTI_NORMALIZER",
+      "children": [
+        {
+          "type": "TEXT_NORMALIZER"
+        },
+        {
+          "type": "TEXT_REGULARIZER",
+          "replacements": [
+            {
+              "old": "\u00b5",
+              "new": "\u03bc"
+            },
+            {
+              "old": "\u2013\u2014\u2014",
+              "new": "-"
+            },
+            {
+              "old": "\u2013\u2014",
+              "new": "-"
+            },
+            {
+              "old": "\"",
+              "new": "''"
+            },
+            {
+              "old": "`",
+              "new": "'"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201d",
+              "new": "''"
+            },
+            {
+              "old": "\u00b4",
+              "new": "'"
+            },
+            {
+              "old": "\u2018",
+              "new": "'"
+            },
+            {
+              "old": "\u2019",
+              "new": "'"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201d",
+              "new": "''"
+            },
+            {
+              "old": "\u201c",
+              "new": "''"
+            },
+            {
+              "old": "\u201e",
+              "new": ",,"
+            },
+            {
+              "old": "\u2026",
+              "new": "..."
+            },
+            {
+              "old": "\u2032",
+              "new": "'"
+            },
+            {
+              "old": "\u2033",
+              "new": "''"
+            },
+            {
+              "old": "\u2034",
+              "new": "'''"
+            },
+            {
+              "old": "\u3003",
+              "new": "''"
+            },
+            {
+              "old": "\u2160",
+              "new": "I"
+            },
+            {
+              "old": "\u2161",
+              "new": "II"
+            },
+            {
+              "old": "\u2162",
+              "new": "III"
+            },
+            {
+              "old": "\u2163",
+              "new": "IV"
+            },
+            {
+              "old": "\u2164",
+              "new": "V"
+            },
+            {
+              "old": "\u2165",
+              "new": "VI"
+            },
+            {
+              "old": "\u2166",
+              "new": "VII"
+            },
+            {
+              "old": "\u2167",
+              "new": "VIII"
+            },
+            {
+              "old": "\u2168",
+              "new": "IX"
+            },
+            {
+              "old": "\u2169",
+              "new": "X"
+            },
+            {
+              "old": "\u216a",
+              "new": "XI"
+            },
+            {
+              "old": "\u216b",
+              "new": "XII"
+            },
+            {
+              "old": "\u216c",
+              "new": "L"
+            },
+            {
+              "old": "\u216d",
+              "new": "C"
+            },
+            {
+              "old": "\u216e",
+              "new": "D"
+            },
+            {
+              "old": "\u216f",
+              "new": "M"
+            },
+            {
+              "old": "\u2170",
+              "new": "i"
+            },
+            {
+              "old": "\u2171",
+              "new": "ii"
+            },
+            {
+              "old": "\u2172",
+              "new": "iii"
+            },
+            {
+              "old": "\u2173",
+              "new": "iv"
+            },
+            {
+              "old": "\u2174",
+              "new": "v"
+            },
+            {
+              "old": "\u2175",
+              "new": "vi"
+            },
+            {
+              "old": "\u2176",
+              "new": "vii"
+            },
+            {
+              "old": "\u2177",
+              "new": "viii"
+            },
+            {
+              "old": "\u2178",
+              "new": "ix"
+            },
+            {
+              "old": "\u2179",
+              "new": "x"
+            },
+            {
+              "old": "\u217a",
+              "new": "xi"
+            },
+            {
+              "old": "\u217b",
+              "new": "xii"
+            },
+            {
+              "old": "\u217c",
+              "new": "l"
+            },
+            {
+              "old": "\u217d",
+              "new": "c"
+            },
+            {
+              "old": "\u217e",
+              "new": "d"
+            },
+            {
+              "old": "\u217f",
+              "new": "m"
+            },
+            {
+              "old": "\\s+(?u)",
+              "new": " ",
+              "regex": true
+            },
+            {
+              "old": "\\n(?u)",
+              "regex": true
+            },
+            {
+              "old": "^\\s+(?u)",
+              "regex": true
+            },
+            {
+              "old": "\\s+$(?u)",
+              "regex": true
+            }
+          ]
+        },
+        {
+          "type": "STRIP_NORMALIZER"
+        },
+        {
+          "type": "BIDI_NORMALIZER"
+        }
+      ]
+    },
+    "codec": {
+      "charset": [
+        "",
+        " ",
+        "!",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        ">",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "H",
+        "I",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "X",
+        "[",
+        "]",
+        "_",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "x",
+        "y",
+        "{",
+        "|",
+        "}",
+        "~",
+        "\u028e",
+        "\u0391",
+        "\u0392",
+        "\u0398",
+        "\u0399",
+        "\u03a4",
+        "\u03b1",
+        "\u03b2",
+        "\u03b3",
+        "\u03b4",
+        "\u03b5",
+        "\u03b6",
+        "\u03b7",
+        "\u03b8",
+        "\u03b9",
+        "\u03bb",
+        "\u03bc",
+        "\u03bd",
+        "\u03be",
+        "\u03bf",
+        "\u03c0",
+        "\u03c1",
+        "\u03c3",
+        "\u03c4",
+        "\u03c5",
+        "\u03c7",
+        "\u03c8",
+        "\u03c9",
+        "\u060c",
+        "\u061b",
+        "\u061f",
+        "\u0621",
+        "\u0622",
+        "\u0623",
+        "\u0624",
+        "\u0625",
+        "\u0626",
+        "\u0627",
+        "\u0628",
+        "\u0629",
+        "\u062a",
+        "\u062b",
+        "\u062c",
+        "\u062d",
+        "\u062e",
+        "\u062f",
+        "\u0630",
+        "\u0631",
+        "\u0632",
+        "\u0633",
+        "\u0634",
+        "\u0635",
+        "\u0636",
+        "\u0637",
+        "\u0638",
+        "\u0639",
+        "\u063a",
+        "\u0640",
+        "\u0641",
+        "\u0642",
+        "\u0643",
+        "\u0644",
+        "\u0645",
+        "\u0646",
+        "\u0647",
+        "\u0648",
+        "\u0649",
+        "\u064a",
+        "\u064b",
+        "\u064c",
+        "\u064d",
+        "\u064e",
+        "\u064f",
+        "\u0650",
+        "\u0651",
+        "\u0652"
+      ]
+    }
+  },
+  "processes": 1,
+  "maxIters": 10000000,
+  "skipInvalidGt": true,
+  "display": 500.0,
+  "statsSize": 100,
+  "batchSize": 1,
+  "checkpointFrequency": -1.0,
+  "iter": 364139,
+  "lossStats": [
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity",
+    "Infinity"
+  ],
+  "lerStats": [
+    0.0125,
+    0.0,
+    0.014084507,
+    0.013888889,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.14285715,
+    0.0,
+    0.03125,
+    0.039473683,
+    0.050847456,
+    0.014285714,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.05882353,
+    0.016393442,
+    0.013888889,
+    0.0,
+    0.0,
+    0.013157895,
+    0.0,
+    0.018518519,
+    0.0,
+    0.0,
+    0.0,
+    0.14285715,
+    0.02739726,
+    0.0,
+    0.024691358,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.016393442,
+    0.0,
+    0.0,
+    0.07575758,
+    0.0,
+    0.018181818,
+    0.0125,
+    0.0,
+    0.014084507,
+    0.0,
+    0.019607844,
+    0.014492754,
+    0.0,
+    0.06666667,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.014285714,
+    0.0,
+    0.016129032,
+    0.0,
+    0.03448276,
+    0.040816326,
+    0.0,
+    0.035714287,
+    0.0,
+    0.014492754,
+    0.0,
+    0.014285714,
+    0.0,
+    0.030303031,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.028985508,
+    0.0,
+    0.01369863,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.013157895,
+    0.0,
+    0.37313432,
+    0.01724138,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.024691358,
+    0.0,
+    0.0
+  ],
+  "dtStats": [
+    0.020548582,
+    0.024151087,
+    0.018998384,
+    0.024532318,
+    0.0121665,
+    0.022799969,
+    0.018761635,
+    0.012409687,
+    0.0086426735,
+    0.018665314,
+    0.0074071884,
+    0.022366524,
+    0.006526947,
+    0.019050121,
+    0.01851964,
+    0.030644655,
+    0.018973827,
+    0.018301964,
+    0.008334875,
+    0.016488552,
+    0.017866611,
+    0.018051386,
+    0.018445492,
+    0.005964279,
+    0.016885042,
+    0.020151138,
+    0.009068966,
+    0.0073046684,
+    0.012806416,
+    0.018693686,
+    0.011739016,
+    0.020257235,
+    0.013377428,
+    0.0067048073,
+    0.020016193,
+    0.015402317,
+    0.016568422,
+    0.0055520535,
+    0.019150019,
+    0.013192177,
+    0.008799076,
+    0.017703056,
+    0.018449306,
+    0.013607264,
+    0.012646675,
+    0.019927263,
+    0.016787052,
+    0.019129276,
+    0.018533707,
+    0.016440868,
+    0.018056631,
+    0.016275883,
+    0.03199935,
+    0.018316984,
+    0.010939121,
+    0.006030798,
+    0.02448368,
+    0.018026352,
+    0.006620407,
+    0.03868389,
+    0.0076663494,
+    0.008718967,
+    0.012265682,
+    0.019070625,
+    0.015349627,
+    0.01916933,
+    0.015798569,
+    0.018906832,
+    0.01205039,
+    0.01603198,
+    0.0216434,
+    0.010089874,
+    0.008769035,
+    0.0069196224,
+    0.017931938,
+    0.015124083,
+    0.010510445,
+    0.0073559284,
+    0.01695323,
+    0.01746273,
+    0.024890184,
+    0.020240784,
+    0.017248392,
+    0.01954937,
+    0.017904758,
+    0.017355442,
+    0.017011166,
+    0.030165195,
+    0.0073611736,
+    0.016207933,
+    0.020910025,
+    0.011872292,
+    0.01940775,
+    0.025356293,
+    0.012863636,
+    0.008835077,
+    0.01438427,
+    0.014754772,
+    0.020546198,
+    0.017948389
+  ],
+  "totalTime": 7054.3584,
+  "earlyStoppingFrequency": -1.0,
+  "earlyStoppingNbest": 5,
+  "earlyStoppingBestModelPrefix": "best_arabic_new_2_",
+  "earlyStoppingBestAccuracy": 0.97573453,
+  "earlyStoppingBestCurNbest": 1,
+  "earlyStoppingBestAtIter": 364140,
+  "outputModelPrefix": "arabic_new_2_",
+  "dataAugRetrainOnOriginal": true,
+  "version": 2
+}
