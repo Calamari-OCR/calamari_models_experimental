@@ -1201,7 +1201,7 @@
   "saved_checkpoint_sub_dir": "checkpoint/checkpoint_0003",
   "checkpoint_sub_dir": "checkpoint/checkpoint_{epoch:04d}",
   "checkpoint_save_freq": "epoch",
-  "version": 5,
+  "version": 6,
   "data_aug_retrain_on_original": true,
   "current_stage": 1,
   "progress_bar": true,
