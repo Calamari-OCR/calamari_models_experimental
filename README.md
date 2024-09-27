@@ -4,17 +4,18 @@ Intermediate results of experiments dealing with the training of mixed models fo
 
 ## Models
 
-The deep3 prefix means that the model was trained using a considerably deeper network structure compared to the default one.
+The `deep3` prefix means that the model was trained using a considerably deeper network structure compared to the default one.
 Cf. the upcoming [selection of default networks](https://github.com/Calamari-OCR/calamari/tree/calamari/2.1/calamari_ocr/resources/networks) for details.
 
-### Printings
+### Prints
 
 Most of the models focus on printings using Latin script and Antiqua/Fraktur types.
 Training data included works from the 15th to 19th century.
+
 Please see the corresponding [paper](https://dl.acm.org/doi/fullHtml/10.1145/3476887.3476910) for details.
 The basic model is LSH-4 (Latin Script Historical) which was also used as a starting point to refine the other Antiqua and Fraktur models.
 
 ### Manuscripts
 
-The "htr" models focus on the recognition of medieval German manuscripts in gothic and bastard fonts.
-More details about the training data etc. to follow.
+The `htr` models focus on the recognition of medieval German manuscripts in Gothic and Bastarda types.
+See corresponding [paper](https://link.springer.com/chapter/10.1007/978-3-031-06555-2_28) for details.
